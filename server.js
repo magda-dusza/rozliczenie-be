@@ -3,6 +3,7 @@ var express = require('express'),
   port = process.env.PORT || 3000,
   mongoose = require('mongoose'),
   Action = require('./api/models/actionModel'), //created model loading here
+  Category = require('./api/models/categoryModel'), //created model loading here
   bodyParser = require('body-parser'),
   cors = require('cors');
   
@@ -15,6 +16,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 var routes = require('./api/routes/actionRoutes'); //importing route
+routes(app); //register the route
+
+var routes = require('./api/routes/categoryRoutes'); //importing route
 routes(app); //register the route
 
 app.use(function(req, res) {
