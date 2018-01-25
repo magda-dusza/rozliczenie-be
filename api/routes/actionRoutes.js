@@ -3,5 +3,5 @@ module.exports = function(app){
 
     app.route('/actions')
         .get(action.list_all_actions)
-        .post(action.create_a_action);
+        .post(action.create_actions);
 }
