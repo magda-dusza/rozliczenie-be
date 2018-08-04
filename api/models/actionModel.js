@@ -9,6 +9,9 @@ var ActionSchema = new Schema({
         type: Date,
         default: Date.now
     },
+    userDate :{
+        type: Date
+    },
     description :{
         type: String
     },
@@ -18,7 +21,19 @@ var ActionSchema = new Schema({
     },
     category :{
         type: String
+    },
+    userCategory: {
+      type: String
+    },
+    raw: {
+      type: Object
     }
+});
+
+ActionSchema.pre('save', function(next) {
+  this.userCategory = this.get('category');
+  this.userDate = this.get('date');
+  next();
 });
 
 module.exports = mongoose.model('Action', ActionSchema);
